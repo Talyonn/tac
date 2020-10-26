@@ -17,10 +17,10 @@ def get_rows():
 
     statement = """
     SELECT DISTINCT ?monument ?monumentLabel ?monumentAddress ?location WHERE {
-        ?Monument   wdt:P31/wdt:P279 wd:Q4989906.
-        ?Monument   wdt:P131 wd:Q239.
-        ?Monument   wdt:P6375 ?MonumentAddress.
-        ?Monument   wdt:P625 ?location.
+        ?monument   wdt:P31/wdt:P279 wd:Q4989906.
+        ?monument   wdt:P131 wd:Q239.
+        ?monument   wdt:P6375 ?MonumentAddress.
+        ?monument   wdt:P625 ?location.
         SERVICE wikibase:label { bd:serviceParam wikibase:language "en" . }
     }
     ORDER BY ?monumentLabel
