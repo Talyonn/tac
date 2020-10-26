@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-"""Query Wikidata for Belgian politicians"""
+"""Query Wikidata for Belgian Monuments"""
 
 import argparse
 from datetime import datetime as dt
