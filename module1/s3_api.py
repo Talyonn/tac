@@ -8,14 +8,12 @@ import requests
 def print_coord(address):
     """Fonction pour récupérer les street arts à Bruxelles"""
     url = "https://opendata.bruxelles.be/api/records/1.0/search/"
-    data = {'dataset': 'streetart', 'q' : lieu, 'format': 'json'}
+    data = {'dataset': 'streetart', 'q' : street, 'format': 'json'}
     resp = requests.get(url, data)
     json_list = json.loads(resp.text)
     for item in json_list:
         display_name = item['display_name']
         short_name = display_name.split(", ")[0]
-        lat = item['lat']
-        lon = item['lon']
         print(f"{short_name} ({lat} - {lon})")
 
 def print_info(country_name):
