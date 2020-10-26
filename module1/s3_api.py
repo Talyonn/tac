@@ -6,10 +6,10 @@ import sys
 import requests
 
 def print_coord(address):
-    """Retrieve coordinates from Open Street Map"""
-    osm = "https://nominatim.openstreetmap.org/search"
-    data = {'q': address, 'format': 'json'}
-    resp = requests.get(osm, data)
+    """Fonction pour récupérer les street arts à Bruxelles"""
+    url = "https://opendata.bruxelles.be/api/records/1.0/search/"
+    data = {'dataset': 'streetart', 'q' : lieu, 'format': 'json'}
+    resp = requests.get(url, data)
     json_list = json.loads(resp.text)
     for item in json_list:
         display_name = item['display_name']
