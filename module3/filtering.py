@@ -17,7 +17,7 @@ sw += ["les", "plus", "cette", "fait", "faire", "être", "deux", "comme", "dont"
 sw = set(sw)
 
 
-def filtering(year, folder=None):
+def filtering(year, folder):
     if folder is None:
         input_path = f"{year}.txt"
         output_path = f"{year}_keywords.txt"
@@ -36,6 +36,6 @@ def filtering(year, folder=None):
 
 
 if __name__ == '__main__':
-    data_path = sys.argv[1]
-    chosen_year = sys.argv[2]
+    data_path = 1956
+    chosen_year = 'data'
     filtering(data_path, chosen_year)
