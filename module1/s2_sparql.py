@@ -1,4 +1,5 @@
-"""Query Wikidata for Belgian politicians"""
+<<<<<<< HEAD
+"""Query Wikidata for Belgian Monuments"""
 
 import argparse
 from datetime import datetime as dt
@@ -15,14 +16,14 @@ def get_rows():
     sparql = SPARQLWrapper(endpoint)
 
     statement = """
-    SELECT DISTINCT ?person ?personLabel ?dateBirth ?dateDeath WHERE {
-        ?person wdt:P27 wd:Q31 .
-        ?person wdt:P106 wd:Q82955 .
-        ?person wdt:P569 ?dateBirth .
-        OPTIONAL {?person wdt:P570 ?dateDeath .}
+    SELECT DISTINCT ?monument ?monumentLabel ?monumentAddress ?location WHERE {
+        ?monument   wdt:P31/wdt:P279 wd:Q4989906.
+        ?monument   wdt:P131 wd:Q239.
+        ?monument   wdt:P6375 ?MonumentAddress.
+        ?monument   wdt:P625 ?location.
         SERVICE wikibase:label { bd:serviceParam wikibase:language "en" . }
     }
-    ORDER BY ?personLabel
+    ORDER BY ?monumentLabel
     """
 
     sparql.setQuery(statement)
@@ -30,29 +31,28 @@ def get_rows():
     results = sparql.query().convert()
 
     rows = results['results']['bindings']
-    print(f"\n{len(rows)} Belgian politicians found\n")
+    print(f"\n{len(rows)} Monuments from Brussels found\n")
     return rows
 
 def show(rows, name_filter=None, n=10):
-    """Display n politicians (default=10)"""
-    date_format = "%Y-%m-%dT%H:%M:%SZ"
+    """Display n monuments (default=10)"""
     if name_filter:
-        rows = [row for row in rows if name_filter in row['personLabel']['value'].lower()]
+        rows = [row for row in rows if name_filter in row['monumentLabel']['value'].lower()]
     print(f"Displaying the first {n}:\n")
     for row in rows[:n]:
         try:
-            birth_date = dt.strptime(row['dateBirth']['value'], date_format)
-            birth_year = birth_date.year
+            monumentLabel = row['monumentLabel']['value']
         except ValueError:
-            birth_year = "????"
+            monumentLabel = "===="
         try:
-            death_date = dt.strptime(row['dateDeath']['value'], date_format)
-            death_year = death_date.year
-        except ValueError: # unknown death date
-            death_year = "????"
-        except KeyError: # still alive
-            death_year = ""
-        print(f"{row['personLabel']['value']} ({birth_year}-{death_year})")
+            monumentAddress = row['monumentaddress']['value']
+        except ValueError: 
+            monumentAddress = "===="
+        try:
+            loc = row['location']['value']
+        except ValueError: 
+            monumentAddress = "===="
+        print(monumentLabel + "/ " + monumentAddress + "/ "  + loc)
 
 if __name__ == "__main__":
     args = parser.parse_args()
@@ -60,3 +60,5 @@ if __name__ == "__main__":
     my_filter = args.filter if args.filter else None
     number = args.number if args.number else 10
     show(my_rows, my_filter, number)
+=======
+
