@@ -13,16 +13,14 @@ sw += ["les", "plus", "cette", "fait", "faire", "être", "deux", "comme", "dont"
        "ils", "bien", "sans", "peut", "tous", "après", "ainsi", "donc", "cet", "sous",
        "celle", "entre", "encore", "toutes", "pendant", "moins", "dire", "cela", "non",
        "faut", "trois", "aussi", "dit", "avoir", "doit", "contre", "depuis", "autres",
-       "van", "het", "autre", "jusqu", "ville","le","la","alors","celui","car","un","une","monsieur","messieur","quelque","année"
-       "quand","parce","que","très","peu","ici","dernier","toute","trop","côté","très","déjà","car","mais","ou","est","donc","or","ni"
-       "prix","agit","mois","lors","peu","cas","assez","rue","mesdames","quant","chaque"]
+       "van", "het", "autre", "jusqu", "ville"]
 sw = set(sw)
 
 
-def filtering(year, folder):
+def filtering(year, folder=None):
     if folder is None:
-        input_path = f"{year}.txt"
-        output_path = f"{year}_keywords.txt"
+        input_path = f"../data/{year}.txt"
+        output_path = f"../data/{year}_keywords.txt"
     else:
         input_path = f"{folder}/{year}.txt"
         output_path = f"{folder}/{year}_keywords.txt"
@@ -38,6 +36,6 @@ def filtering(year, folder):
 
 
 if __name__ == '__main__':
-    data_path = 1956
-    chosen_year = 'data'
+    data_path = sys.argv[1]
+    chosen_year = sys.argv[2]
     filtering(data_path, chosen_year)

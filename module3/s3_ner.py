@@ -21,15 +21,14 @@ def test():
             print(f"'{doc.text}' contains no entities")
 
 def search():
-    text = open("../data/1956.txt").read()[:1000000]
+    text = open("data/all.txt").read()[:1000000]
     doc = nlp(text)
-    items = defaultdict(int)
+    people = defaultdict(int)
     for ent in doc.ents:
-        if ent.label_ == "PER" or arg == "LOC" or arg == "ORG":
-            if ent.label_ == arg and len(ent.text) > 3:
-                people[ent.text] += 1
-    sorted_items = sorted(items.items(), key=lambda kv: kv[1], reverse=True)
-    for person, freq in sorted_items[:10]:
+        if ent.label_ == "PER" and len(ent.text) > 3:
+            people[ent.text] += 1
+    sorted_people = sorted(people.items(), key=lambda kv: kv[1], reverse=True)
+    for person, freq in sorted_people[:10]:
         print(f"{person} appears {freq} times in the corpus")
 
 if __name__ == "__main__":
