@@ -2,11 +2,8 @@
 
 import sys
 import nltk
-try:
-    from nltk.corpus import stopwords
-except LookupError:
-    nltk.download('stopwords')
-    from nltk.corpus import stopwords
+from nltk.corpus import stopwords
+nltk.download('stopwords')
 
 sw = stopwords.words("french")
 sw += ["les", "plus", "cette", "fait", "faire", "être", "deux", "comme", "dont", "tout",
