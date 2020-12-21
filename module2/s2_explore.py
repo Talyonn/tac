@@ -6,7 +6,7 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 
-path = "data/txt/"
+path = "data/1960-1980/"
 dic = defaultdict(int)
 dic2 = defaultdict(int)
 all_years = [str(year) for year in range(1847, 1979)]
