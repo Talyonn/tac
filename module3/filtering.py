@@ -6,11 +6,13 @@ from nltk.corpus import stopwords
 nltk.download('stopwords')
 
 sw = stopwords.words("french")
-sw += ["les", "plus", "cette", "fait", "faire", "être", "deux", "comme", "dont", "tout",
+sw += ["les", "recette","plus", "cette", "fait", "faire", "être", "deux", "comme", "dont", "tout",
        "ils", "bien", "sans", "peut", "tous", "après", "ainsi", "donc", "cet", "sous",
        "celle", "entre", "encore", "toutes", "pendant", "moins", "dire", "cela", "non",
        "faut", "trois", "aussi", "dit", "avoir", "doit", "contre", "depuis", "autres",
-       "van", "het", "autre", "jusqu", "ville"]
+       "van", "het", "autre", "jusqu", "ville","octobre","service","bruxelles","assistance publique",
+       "assistance","publique","commission","conseil","communal","Bruxelles","Octobre","Assistance","demande",
+       "rue","franc","commune","conseil","mesdames","messieurs","publique","Bruxelles","Rue","rue","service","services","Service","Services","Francs","Recette","recette","francs","franc"]
 sw = set(sw)
 
 
